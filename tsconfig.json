@@ -12,5 +12,6 @@
     "outDir": "./build/",
     "lib": ["ES2021.String"]
   },
-  "include": ["src"]
+  "include": ["src", "jest.config.ts"],
+  "exclude": ["tests"]
 }

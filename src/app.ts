@@ -1,32 +1,29 @@
-import express from 'express';
-import multer from 'multer';
-import { parseFileToArrayOfObjects } from './utils/parseFile';
-const upload = multer({ dest: './uploads' });
+import express, { NextFunction } from 'express';
+import cors from 'cors';
+import fileUploadRouter from './router/fileRouter';
+import { errorHandler } from './controllers/errorController';
+import AppError from './utils/appError';
+import rateLimit from 'express-rate-limit';
 
 const app = express();
 
 app.use(express.json());
 
-app.post('/api/upload', upload.single('upload_file'), async (req, res) => {
-  try {
-    if (!req.file || req.file.mimetype !== 'application/toml') {
-      return res.status(400).json({
-        message: 'Please insert a toml file',
-      });
-    }
-    console.log(req.file);
-    console.log('________________');
-
-    const data = await parseFileToArrayOfObjects(req.file.path);
-
-    return res.status(200).json(data);
-  } catch (err) {
-    return console.log(err);
-  }
+const limiter = rateLimit({
+  windowMs: 15 * 60 * 1000,
+  max: 30,
+  standardHeaders: true,
 });
 
-app.all('*', (_, res) => {
-  res.send('unknown endpoint');
+app.use(limiter);
+app.use(cors());
+
+app.use('/api/upload', fileUploadRouter);
+
+app.all('*', (_req, _res, next: NextFunction) => {
+  next(new AppError('unknown endpoint', 404));
 });
+
+app.use(errorHandler);
 
 export default app;

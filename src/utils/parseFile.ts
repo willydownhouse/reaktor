@@ -20,14 +20,28 @@ export const parseFileToArrayOfObjects = async (path: string) => {
     .split(',')
     .filter(item => item !== `` && item !== `"`);
 
-  // amount of packages and package indexes
+  // get package string indexes
   const arrOfIndexes = getPackageStringIndexes(
     fileAsAnArrayOfStrings,
     'package'
   );
 
+  // get index of [metadata] string
+  const metaIndex = fileAsAnArrayOfStrings.indexOf('[metadata]');
+
+  // make each package as an array (in Array)
   const arrayOfPackageArrays = arrOfIndexes.map((index, i) => {
-    return fileAsAnArrayOfStrings.slice(index, arrOfIndexes[i + 1]);
+    // if file does not have metadata
+    if (metaIndex === -1) {
+      return fileAsAnArrayOfStrings.slice(index, arrOfIndexes[i + 1]);
+    }
+
+    // if file has metadata then remove it
+    const fileAsAnArrayOfStringsWithoutMeta = fileAsAnArrayOfStrings.slice(
+      0,
+      metaIndex
+    );
+    return fileAsAnArrayOfStringsWithoutMeta.slice(index, arrOfIndexes[i + 1]);
   });
 
   const arrayOfPackageObjects = arrayOfPackageArrays.map(arr => {
