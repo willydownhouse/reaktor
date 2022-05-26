@@ -1,5 +1,6 @@
 export function buildPackageObject(arr: string[]) {
   const packageOb: { [key: string]: string | boolean } = {};
+
   for (let index = 0; index < arr.length; index++) {
     if (arr[index] === 'dependencies' || arr[index] === 'extras') break;
 

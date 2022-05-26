@@ -26,8 +26,8 @@ describe('PARSING RELATED FUNCTIONS', () => {
     expect(data.length).toBe(4);
     expect(data[0].dependencies!.length).toBe(3);
   });
-  test('FUNCTION: parseFileToArrayOfObjects(poetry.lock.toml) -> return array of 70 packages', async () => {
-    const data = await parseFileToArrayOfObjects('poetry.lock.toml');
+  test('FUNCTION: parseFileToArrayOfObjects(poetry.lock) -> return array of 70 packages', async () => {
+    const data = await parseFileToArrayOfObjects('poetry.lock');
 
     expect(data.length).toBe(70);
   });

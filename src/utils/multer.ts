@@ -8,9 +8,12 @@ export const upload = multer({
     fileSize: maxSize,
   },
   fileFilter: function (_req, file, cb) {
-    if (file.mimetype !== 'application/toml') {
-      return cb(null, false);
+    if (
+      file.mimetype === 'application/octet-stream' ||
+      file.mimetype === 'application/toml'
+    ) {
+      return cb(null, true);
     }
-    cb(null, true);
+    cb(null, false);
   },
 });
