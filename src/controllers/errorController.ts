@@ -14,7 +14,7 @@ export const errorHandler: ErrorRequestHandler = (
   const statusCode = err instanceof AppError ? err.statusCode : 500;
 
   if (err.name === 'MulterError') {
-    return res.status(+(err as MulterError).code).json({
+    return res.status(400).json({
       message: err.message,
     });
   }
