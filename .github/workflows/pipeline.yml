@@ -22,7 +22,7 @@ jobs:
       - name: lint
         run: npm run lint
       - name: build
-        run: npm run build:back
+        run: npm run tsc
       - name: test
         run: npm run test
       - name: debloy
