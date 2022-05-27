@@ -6,7 +6,7 @@
   "scripts": {
     "tsc": "tsc",
     "start:dev": "NODE_ENV=development ts-node-dev src/index.ts",
-    "start": "NODE_ENV=production node ./build/src/index.js",
+    "start": "NODE_ENV=production node build/src/index.js",
     "test": "NODE_ENV=test jest --verbose --runInBand",
     "lint": "eslint --ext .ts ."
   },
