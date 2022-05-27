@@ -10,7 +10,7 @@ const errorHandler = (err, _req, res, _next) => {
     console.log(err);
     const statusCode = err instanceof appError_1.default ? err.statusCode : 500;
     if (err.name === 'MulterError') {
-        return res.status(+err.code).json({
+        return res.status(400).json({
             message: err.message,
         });
     }
