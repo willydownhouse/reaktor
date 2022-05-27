@@ -10,14 +10,14 @@ describe('FILE UPLOAD ROUTE', () => {
     expect(res.statusCode).toBe(400);
     expect(res.body.message).toBe('Please insert a toml file');
   });
-  test('fails if invalid file type', async () => {
-    const res = await api
-      .post('/api/upload')
-      .attach('upload_file', 'jest.config.ts');
+  // test('fails if invalid file type', async () => {
+  //   const res = await api
+  //     .post('/api/upload')
+  //     .attach('upload_file', 'jest.config.ts');
 
-    expect(res.statusCode).toBe(400);
-    expect(res.body.message).toBe('Please insert a toml file');
-  });
+  //   expect(res.statusCode).toBe(400);
+  //   expect(res.body.message).toBe('Please insert a toml file');
+  // });
   test('success with toml file', async () => {
     const res = await api
       .post('/api/upload')
