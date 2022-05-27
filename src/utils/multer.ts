@@ -8,6 +8,8 @@ export const upload = multer({
     fileSize: maxSize,
   },
   fileFilter: function (_req, file, cb) {
+    console.log('FROM MULTER FILE FILTER:');
+    console.log(file);
     if (
       file.mimetype === 'application/octet-stream' ||
       file.mimetype === 'application/toml'
