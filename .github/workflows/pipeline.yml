@@ -33,5 +33,5 @@ jobs:
           heroku_app_name: 'sheltered-beyond-58641'
           heroku_email: 'ville.l.alatalo@gmail.com'
           healthcheck: 'https://sheltered-beyond-58641.herokuapp.com/health'
-          checkstring: 'healthcheck ok'
+          checkstring: 'ok'
           rollbackonhealthcheckfailed: true
