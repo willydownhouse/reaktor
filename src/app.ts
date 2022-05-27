@@ -21,7 +21,7 @@ app.use(cors());
 app.use('/api/upload', fileUploadRouter);
 
 app.get('/health', (_req, res) => {
-  res.send('healhcheck ok');
+  res.send('healthcheck ok');
 });
 
 app.all('*', (_req, _res, next: NextFunction) => {
