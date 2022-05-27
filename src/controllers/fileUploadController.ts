@@ -8,7 +8,6 @@ const uploadTomlFile = async (
   next: NextFunction
 ) => {
   try {
-    console.log(req.file);
     if (!req.file) {
       throw new AppError('Please insert a toml file', 400);
     }
