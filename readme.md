@@ -1,4 +1,7 @@
-Reaktor coding challenge
+App running:
+https://sheltered-beyond-58641.herokuapp.com/
+
+Reaktor coding challenge:
 
 Some Python projects use Poetry to manage dependencies. Poetry uses a file called poetry.lock to record which packages a project needs and which dependencies those packages have. Here is an example of such a file.
 
