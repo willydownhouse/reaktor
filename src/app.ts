@@ -20,6 +20,10 @@ app.use(cors());
 
 app.use('/api/upload', fileUploadRouter);
 
+app.get('/health', (_req, res) => {
+  res.send('healhcheck ok');
+});
+
 app.all('*', (_req, _res, next: NextFunction) => {
   next(new AppError('unknown endpoint', 404));
 });
